@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors', '1');
-class Empleado
+class ApiladoraArroz
 {
     function Crear($datos)
     {
@@ -21,7 +21,7 @@ class Empleado
         // Imagen  
         $hoy = date("YmdHis");
 
-        $carpeta = "../../imagenes/users/empleados/";
+        $carpeta = "../../imagenes/users/apiladoraArroz/";
 
         $nombreImagen  = $_FILES['foto']['name'];
 
@@ -33,12 +33,12 @@ class Empleado
         if ($nombreImagen !== "") {
             $pixeles = getimagesize($_FILES['foto']['tmp_name']);
             $minimo = array(
-                'width' => '734',
-                'height' => '778'
+                'width' => '400',
+                'height' => '400'
             );
             $maximo = array(
-                'width' => '734',
-                'height' => '778'
+                'width' => '1800',
+                'height' => '1800'
             );
 
             $altura  = $pixeles[0];
@@ -69,9 +69,9 @@ class Empleado
                     $respuesta['mensaje'] = "El usuario ya existe";
                 } else {
                     if (move_uploaded_file($_FILES['foto']['tmp_name'], $carpeta . $nombreFinal)) {
-                        // $tb_empleados ='1';
-                        $tb_empleados = Conexion::UpdateRegistro("INSERT INTO tb_empleados  (nombres,apellidos,celular,fecha_creado,usuario_creado)  VALUES  ('" . htmlentities($nombres) . "','" . htmlentities($apellidos) . "','" . htmlentities($celular) . "', now(),'" . htmlentities($iduser) . "')");
-                        if ($tb_empleados) {
+                        // $tb_apiladora_arroz ='1';
+                        $tb_apiladora_arroz = Conexion::UpdateRegistro("INSERT INTO tb_apiladora_arroz  (nombres,apellidos,celular,fecha_creado,usuario_creado)  VALUES  ('" . htmlentities($nombres) . "','" . htmlentities($apellidos) . "','" . htmlentities($celular) . "', now(),'" . htmlentities($iduser) . "')");
+                        if ($tb_apiladora_arroz) {
                             $pass           = sha1($password);
                             $cod_usuario = Conexion::lastId();
 
@@ -104,10 +104,10 @@ class Empleado
 
     function CambiarEstado($iduser, $cod_usuario, $estado)
     {;
-        $tb_empleados = Conexion::UpdateRegistro("update tb_empleados set estado = '$estado',  
+        $tb_apiladora_arroz = Conexion::UpdateRegistro("update tb_apiladora_arroz set estado = '$estado',  
                                                                fecha_editado = now(), usuario_editado = '$iduser'
                                                                where cod_administrador = '$cod_usuario'  ");
-        if ($tb_empleados) {
+        if ($tb_apiladora_arroz) {
             $respuesta['status'] = "correcto";
             $respuesta['mensaje'] = "Estado actualizado";
         } else {
@@ -132,7 +132,7 @@ class Empleado
         // }
 
         if ($_FILES['imagen']['name'] !== '') {
-            $carpeta = "../../imagenes/users/empleados/";
+            $carpeta = "../../imagenes/users/apiladoraArroz/";
             $imagen = $_FILES['imagen']['name'];
 
             //imagen.casa.jpg
@@ -149,8 +149,8 @@ class Empleado
                     foreach ($data as $d) {
                         $imagenAntigua = $d['foto'];
                     }
-                    if (file_exists('../../imagenes/users/empleados/' . $imagenAntigua)) {
-                        unlink('../../imagenes/users/empleados/' . $imagenAntigua);
+                    if (file_exists('../../imagenes/users/apiladoraArroz/' . $imagenAntigua)) {
+                        unlink('../../imagenes/users/apiladoraArroz/' . $imagenAntigua);
                     }
                     $tb_usuarios  = Conexion::UpdateRegistro("UPDATE tb_usuarios set foto = '$nombreFinal', usuario = '$usuario', correo = '$correo', usuario_editado ='$iduser', fecha_editado = now()
                      where cod_usuario = '$cod_usuario' and cod_rol = '$cod_rol' ");
@@ -196,11 +196,11 @@ class Empleado
         $apellidos         = $_POST['apellidos'];
         $celular           = $_POST['celular'];
 
-        $tb_empleados  = Conexion::UpdateRegistro("UPDATE tb_empleados set 
+        $tb_apiladora_arroz  = Conexion::UpdateRegistro("UPDATE tb_apiladora_arroz set 
             nombres = '$nombres', apellidos = '$apellidos', celular = '$celular',
             fecha_editado = now(), usuario_editado = '$iduser'
             where cod_administrador = '$cod_administrador' ");
-        if ($tb_empleados) {
+        if ($tb_apiladora_arroz) {
             $respuesta['status'] = "correcto";
             $respuesta['mensaje'] = "Información actualizada!";
         } else {
@@ -253,9 +253,9 @@ class Empleado
         $iduser         = $_POST['iduser'];
         $cod_usuario    = $_POST['cod_usuario'];
         $cod_rol        = $_POST['cod_rol'];
-        $tb_empleados = Conexion::UpdateRegistro("UPDATE tb_usuarios set estado = 'D', usuario_eliminado = '$iduser', fecha_eliminado = now() 
+        $tb_apiladora_arroz = Conexion::UpdateRegistro("UPDATE tb_usuarios set estado = 'D', usuario_eliminado = '$iduser', fecha_eliminado = now() 
          where cod_usuario = '$cod_usuario' and cod_rol = '$cod_rol' ");
-        if ($tb_empleados) {
+        if ($tb_apiladora_arroz) {
             $respuesta['status'] = "correcto";
             $respuesta['mensaje'] = "Cuenta eliminada";
         } else {
@@ -271,9 +271,9 @@ class Empleado
         $cod_usuario    = $_POST['cod_usuario'];
         $cod_rol        = $_POST['cod_rol'];
         $estado         = $_POST['estado'];
-        $tb_empleados = Conexion::UpdateRegistro("UPDATE tb_usuarios set estado = '$estado', usuario_editado = '$iduser', fecha_editado = now() 
+        $tb_apiladora_arroz = Conexion::UpdateRegistro("UPDATE tb_usuarios set estado = '$estado', usuario_editado = '$iduser', fecha_editado = now() 
          where cod_usuario = '$cod_usuario' and cod_rol = '$cod_rol' ");
-        if ($tb_empleados) {
+        if ($tb_apiladora_arroz) {
             $respuesta['status'] = "correcto";
             $respuesta['mensaje'] = "Estado actualizado";
         } else {

@@ -17,7 +17,7 @@ if (!isset($_SESSION['datos_login'])) {
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title> Crear empleado</title>
+    <title> Crear apiladora de arroz</title>
     <link rel="apple-touch-icon" href="../app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="../app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -83,10 +83,10 @@ if (!isset($_SESSION['datos_login'])) {
                         <div class="col-md-12 col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title"> NUEVO CLIENTE </h4>
+                                    <h4 class="card-title"> NUEVA APILADORA DE ARROZ </h4>
                                 </div>
                                 <div class="card-body">
-                                    <form id="frmEmpleado" method="post">
+                                    <form id="frmApiladoraArroz" method="post">
                                         <input type="hidden" id="iduser" name="iduser" value="<?php echo  $_SESSION['datos_login']['iduser']; ?>">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
@@ -253,14 +253,14 @@ if (!isset($_SESSION['datos_login'])) {
                 }
                 document.getElementById('agregaFoto').style.display = 'none';
 
-                var formData = new FormData($("#frmEmpleado")[0]);
+                var formData = new FormData($("#frmApiladoraArroz")[0]);
                     formData.append('tipo', 'C');
                 for (let [key, value] of formData.entries()) {
                     console.log(key, ':', value);
                 }
                 $.ajax({
                     type: "POST",
-                    url: "php/empleado/empleado.php",
+                    url: "php/apiladoraArroz/apiladoraArroz.php",
                     dataType: 'json',
                     data: formData,
                     cache: false,
@@ -273,7 +273,7 @@ if (!isset($_SESSION['datos_login'])) {
                     success: function(response) {
                         console.log(response);
                         if (response['status'] == 'correcto') {
-                            document.getElementById("frmEmpleado").reset();
+                            document.getElementById("frmApiladoraArroz").reset();
                             alertaExisto(response['mensaje']);
                         } else {
                             alertaError(response['mensaje']);

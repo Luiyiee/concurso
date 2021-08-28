@@ -1,8 +1,8 @@
 <?php
 // ini_set('display_errors', '1');
 require_once "../../configuracion/conexion.php";
-require_once "clases/c_empleado.php";
-$empleado = new empleado();
+require_once "clases/c_apiladoraArroz.php";
+$apiladoraArroz = new apiladoraArroz();
 
 $tipo = $_POST['tipo'];
 if(is_null($tipo)){
@@ -12,27 +12,27 @@ if(is_null($tipo)){
 // var_dump($tipo);
 switch($tipo){
     case "C":
-        $return = $empleado->Crear($_POST); 
+        $return = $apiladoraArroz->Crear($_POST); 
         break;
     
     case "UC":
-        $return = $empleado->ActualizarCuenta($_POST); 
+        $return = $apiladoraArroz->ActualizarCuenta($_POST); 
         break;
 
     case "UIP":    
-        $return = $empleado->ActualizarInfoPersonal($_POST); 
+        $return = $apiladoraArroz->ActualizarInfoPersonal($_POST); 
         break;
         
     case "UP":    
-        $return = $empleado->ActualizarPassword($_POST); 
+        $return = $apiladoraArroz->ActualizarPassword($_POST); 
         break;
     
     case "CE":    
-        $return = $empleado->ActualizarEstado($_POST); 
+        $return = $apiladoraArroz->ActualizarEstado($_POST); 
         break;
 
      case "D":
-        $return = $empleado->EliminarCuenta($_POST);   
+        $return = $apiladoraArroz->EliminarCuenta($_POST);   
         break;
 
 

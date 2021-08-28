@@ -10,7 +10,7 @@ tu.id_usuario, tu.cod_usuario, tu.cod_rol, tu.usuario, tu.correo,
 ta.nombres, ta.apellidos, tu.foto, tu.estado 
 from tb_usuarios tu 
 INNER JOIN tb_administradores ta on ta.cod_administrador = tu.cod_usuario 
-INNER JOIN tb_empleados    tg on tg.cod_empleado = tu.cod_usuario
+INNER JOIN tb_productora_arroz  tg on tg.cod_productoraArroz = tu.cod_usuario
 where tu.correo = '$email' and tu.password = '$pass' and tu.estado in ('A','I') ");
 
 if ($tb_usuarios) {

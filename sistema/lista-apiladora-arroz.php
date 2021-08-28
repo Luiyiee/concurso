@@ -17,7 +17,7 @@ require_once "configuracion/conexion.php";
   <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
   <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
   <meta name="author" content="PIXINVENT">
-  <title>Invoice List - Vuexy - Bootstrap HTML admin template</title>
+  <title>Liata piladora arroz</title>
   <link rel="apple-touch-icon" href="../app-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="../app-assets/images/ico/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -91,14 +91,14 @@ require_once "configuracion/conexion.php";
                 </thead>
                 <tbody>
                   <?php
-                  $tb_empleados = Conexion::buscarVariosRegistro("SELECT
-                                     tba.cod_empleado,tba.nombres, tba.apellidos, tba.celular,
+                  $tb_apiladora_arroz = Conexion::buscarVariosRegistro("SELECT
+                                     tba.cod_apiladoraArroz,tba.nombres, tba.apellidos, tba.celular,
                                      tu.usuario, tu.correo, tu.estado
-                                     from tb_empleados tba INNER JOIN tb_usuarios tu on tu.cod_usuario = tba.cod_empleado
+                                     from tb_apiladora_arroz tba INNER JOIN tb_usuarios tu on tu.cod_usuario = tba.cod_apiladoraArroz
                                      where tu.cod_rol = 2 and tu.estado in ('A','I') ");
                   $i = 1;
-                  foreach ($tb_empleados as $d) {
-                    $cod_empleado = $d['cod_empleado'];
+                  foreach ($tb_apiladora_arroz as $d) {
+                    $cod_apiladoraArroz = $d['cod_apiladoraArroz'];
                     $nombres      = $d['nombres'];
                     $apellidos    = $d['apellidos'];
                     $celular      = $d['celular'];
@@ -111,7 +111,7 @@ require_once "configuracion/conexion.php";
                       <td> <?php echo $celular ?> </td>
                       <td> <?php echo $correo ?> </td>
                       <td> <button class="btn btn-danger glyphicon glyphicon-remove"
-                       onclick="preguntarSiNo('<?php echo $cod_empleado ?>')"> <i class="fa fa-trash"></i>
+                       onclick="preguntarSiNo('<?php echo $cod_apiladoraArroz ?>')"> <i class="fa fa-trash"></i>
 										</button> </td>
 
                     <?php $i++;
@@ -227,7 +227,7 @@ require_once "configuracion/conexion.php";
       $.ajax({
         dataType: 'json',
         type: "POST",
-        url: "php/empleado/empleado.php",
+        url: "php/apiladoraArroz/apiladoraArroz.php",
         data: {
           iduser: <?php echo $_SESSION['datos_login']['iduser']; ?>,
           cod_usuario: cod_usuario,
@@ -238,7 +238,7 @@ require_once "configuracion/conexion.php";
           if (response['status'] == 'correcto') {
             alertaExisto(response['mensaje']);
             setTimeout(function() {
-              window.location = "http://localhost/concurso/sistema/lista-empleados.php";
+              window.location = "http://localhost/concurso/sistema/lista-apiladora-arroz.php";
             }, 3000);
           } else {
             alertaError(response['mensaje']);

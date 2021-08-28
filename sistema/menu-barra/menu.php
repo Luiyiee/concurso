@@ -37,13 +37,24 @@
                             </ul>
                         </li>
                         <li>
-                          <a class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Second Level"> Empleados </span></a>
+                          <a class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Second Level"> Producutora de arroz </span></a>
                             <ul class="menu-content">
                                 <li>
-                                  <a class="d-flex align-items-center" href="crear-empleado.php"><span class="menu-item text-truncate" data-i18n="Third Level"> Crear </span></a>
+                                  <a class="d-flex align-items-center" href="crear-productora-arroz.php"><span class="menu-item text-truncate" data-i18n="Third Level"> Crear </span></a>
                                 </li>
                                 <li>
-                                  <a class="d-flex align-items-center" href="lista-empleados.php"><span class="menu-item text-truncate" data-i18n="Third Level"> Lista</span></a>
+                                  <a class="d-flex align-items-center" href="lista-productora-arroz.php"><span class="menu-item text-truncate" data-i18n="Third Level"> Lista</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                          <a class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Second Level"> Piladora de arroz </span></a>
+                            <ul class="menu-content">
+                                <li>
+                                  <a class="d-flex align-items-center" href="crear-apiladora-arroz.php"><span class="menu-item text-truncate" data-i18n="Third Level"> Crear </span></a>
+                                </li>
+                                <li>
+                                  <a class="d-flex align-items-center" href="lista-apiladora-arroz.php"><span class="menu-item text-truncate" data-i18n="Third Level"> Lista</span></a>
                                 </li>
                             </ul>
                         </li>
