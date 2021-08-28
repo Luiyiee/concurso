@@ -16,15 +16,19 @@
                         <span class="user-name font-weight-bolder"> <?php echo $_SESSION['datos_login']['usuario']; ?> </span>
                         <?php if($_SESSION['datos_login']['cod_rol'] == '1'){ ?>
                         <span class="user-status">Administrador</span>
+                        <?php }else if($_SESSION['datos_login']['cod_rol'] == '2'){ ?>
+                            <span class="user-status"> Piladora</span>
                         <?php }else{ ?>
-                        <span class="user-status"> Empleado</span>
+                        <span class="user-status"> Productora</span>
                         <?php } ?>
                     </div>
                     <span class="avatar">
                     <?php if($_SESSION['datos_login']['cod_rol'] == '1'){ ?>    
                         <img class="round" src="imagenes/users/administradores/<?php echo $_SESSION['datos_login']['foto']; ?>" alt="avatar" height="40" width="40">
+                        <?php }else if($_SESSION['datos_login']['cod_rol'] == '2'){ ?>
+                            <img class="round" src="imagenes/users/apiladoraArroz/<?php echo $_SESSION['datos_login']['foto']; ?>" alt="avatar" height="40" width="40">
                         <?php }else{ ?>
-                        <img class="round" src="imagenes/users/empleados/<?php echo $_SESSION['datos_login']['foto']; ?>" alt="avatar" height="40" width="40">
+                        <img class="round" src="imagenes/users/productoraArroz/<?php echo $_SESSION['datos_login']['foto']; ?>" alt="avatar" height="40" width="40">
                         <?php } ?>
                         <span class="avatar-status-online"></span>
                     </span>

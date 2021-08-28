@@ -32,11 +32,26 @@ if (!isset($_GET['id'])) {
                     $correo    = $da['correo'];
                     $foto      = $da['foto'];
                 }
+            } else if($cod_rol == 2){
+                $sql_admin    =  Conexion::buscarVariosRegistro("SELECT  tu.cod_usuario, tu.cod_rol, tu.usuario, tu.correo, tu.foto, tu.estado,
+                ta.nombres, ta.apellidos, ta.celular FROM tb_usuarios tu
+         INNER JOIN tb_apiladora_arroz ta ON ta.cod_apiladoraArroz = tu.cod_usuario 
+         where tu.cod_usuario = '$cod_usuario' and tu.cod_rol = '2' ");
+                foreach ($sql_admin as $da) {
+                    $cod_usuario = $da['cod_usuario'];
+                    $cod_rol     = $da['cod_rol'];
+                    $usuario   = $da['usuario'];
+                    $nombres   = $da['nombres'];
+                    $apellidos = $da['apellidos'];
+                    $celular   = $da['celular'];
+                    $correo    = $da['correo'];
+                    $foto      = $da['foto'];
+                }
             } else {
                 $sql_admin    =  Conexion::buscarVariosRegistro("SELECT  tu.cod_usuario, tu.cod_rol, tu.usuario, tu.correo, tu.foto, tu.estado,
                 ta.nombres, ta.apellidos, ta.celular FROM tb_usuarios tu
-         INNER JOIN tb_empleados ta ON ta.cod_empleado = tu.cod_usuario 
-         where tu.cod_usuario = '$cod_usuario' and tu.cod_rol = '2' ");
+         INNER JOIN tb_productora_arroz ta ON ta.cod_productoraArroz = tu.cod_usuario 
+         where tu.cod_usuario = '$cod_usuario' and tu.cod_rol = '3' ");
                 foreach ($sql_admin as $da) {
                     $cod_usuario = $da['cod_usuario'];
                     $cod_rol     = $da['cod_rol'];
@@ -159,8 +174,10 @@ if (!isset($_GET['id'])) {
                                         <div class="media mb-2">
                                             <?php if ($_SESSION['datos_login']['cod_rol'] == '1') { ?>
                                                 <img src="imagenes/users/administradores/<?php echo $foto ?>" alt="<?php echo $foto ?>" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
-                                            <?php } else { ?>
-                                                <img src="imagenes/users/empleados/<?php echo $foto ?>" alt="<?php echo $foto ?>" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
+                                                <?php }else if($_SESSION['datos_login']['cod_rol'] == '2'){ ?>
+                                              <img class="round" src="imagenes/users/apiladoraArroz/<?php echo $_SESSION['datos_login']['foto']; ?>" alt="avatar" height="40" width="40">
+                                                <?php } else { ?>
+                                                <img src="imagenes/users/productoraArroz/<?php echo $foto ?>" alt="<?php echo $foto ?>" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
                                             <?php } ?>
                                             <div class="media-body mt-50">
                                                 <h4> <?php echo $nombres . " " . $apellidos ?> </h4>
@@ -376,8 +393,10 @@ if (!isset($_GET['id'])) {
             $('#ActualizarCuenta').click(function() {
                 <?php if ($_SESSION['datos_login']['cod_rol'] == '1') { ?>
                     var ruta = "php/administrador/administrador.php";
+                <?php }else if($_SESSION['datos_login']['cod_rol'] == '2'){ ?>
+                    var ruta = "php/apiladoraArroz/apiladoraArroz.php";
                 <?php } else { ?>
-                    var ruta = "php/empleado/empleado.php";
+                    var ruta = "php/productoraArroz/productoraArroz.php";
                 <?php } ?>
                 var formData = new FormData(document.getElementById("frmCuenta"));
                 formData.append('tipo', 'UC');

@@ -33,12 +33,12 @@ class Administrador
         if ($nombreImagen !== "") {
             $pixeles = getimagesize($_FILES['foto']['tmp_name']);
             $minimo = array(
-                'width' => '734',
-                'height' => '778'
+                'width' => '400',
+                'height' => '400'
             );
             $maximo = array(
-                'width' => '734',
-                'height' => '778'
+                'width' => '1080',
+                'height' => '1080'
             );
 
             $altura  = $pixeles[0];
