@@ -60,10 +60,12 @@
                         </li>
                     </ul>
                 </li>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="lista-precios.php"><i data-feather="menu"></i><span class="menu-title text-truncate" data-i18n="Menu Levels"> Lista </span></a>               </li>
+               
             <?php } ?>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="lista-voluntarios.php"><i data-feather="menu"></i><span class="menu-title text-truncate" data-i18n="Menu Levels"> Lista </span></a>
+                <!-- <li class=" nav-item"><a class="d-flex align-items-center" href="lista-voluntarios.php"><i data-feather="menu"></i><span class="menu-title text-truncate" data-i18n="Menu Levels"> Lista </span></a>
             
-                </li>
+                </li> -->
                
               
               

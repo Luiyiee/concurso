@@ -76,110 +76,146 @@ require_once "configuracion/conexion.php";
             </div>
             <div class="content-body">
                 <!-- Dashboard Analytics Start -->
-                <section id="dashboard-analytics">
-                    <div class="row match-height">
-                        <!-- Greetings Card starts -->
-                        <!-- <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="card card-congratulations">
-                                <div class="card-body text-center">
-                                    <img src="../app-assets/images/elements/decore-left.png" class="congratulations-img-left" alt="card-img-left" />
-                                    <img src="../app-assets/images/elements/decore-right.png" class="congratulations-img-right" alt="card-img-right" />
-                                    <div class="avatar avatar-xl bg-primary shadow">
-                                        <div class="avatar-content">
-                                            <i data-feather="award" class="font-large-1"></i>
+                <?php if ($_SESSION['datos_login']['cod_rol'] == "1") {  ?>
+                    <section id="dashboard-analytics">
+                        <div class="row match-height">
+
+                            <!-- Greetings Card ends -->
+
+                            <!-- Subscribers Chart Card starts -->
+                            <?php
+                            $query = Conexion::buscarVariosRegistro("SELECT count(*) totalAdministradores from tb_usuarios where cod_rol = '1' ");
+                            foreach ($query as $d) {
+                                $totalAdministradores = $d['totalAdministradores'];
+                            }
+                            ?>
+                            <div class="col-lg-4 col-sm-6 col-12">
+                                <div class="card">
+                                    <div class="card-header flex-column align-items-start pb-0">
+                                        <div class="avatar bg-light-primary p-50 m-0">
+                                            <div class="avatar-content">
+                                                <i data-feather="users" class="font-medium-5"></i>
+                                            </div>
                                         </div>
+                                        <h2 class="font-weight-bolder mt-1"> <?php echo $totalAdministradores ?> </h2>
+                                        <p class="card-text">Administradores</p>
                                     </div>
-                                    <div class="text-center">
-                                        <h1 class="mb-1 text-white">Congratulations John,</h1>
-                                        <p class="card-text m-auto w-75">
-                                            You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.
-                                        </p>
-                                    </div>
+                                    <br clear="all">
+                                    <!-- <div id="gained-chart"></div> -->
                                 </div>
                             </div>
-                        </div> -->
-                        <!-- Greetings Card ends -->
+                            <!-- Subscribers Chart Card ends -->
 
-                        <!-- Subscribers Chart Card starts -->
-                        <?php
-                        $query = Conexion::buscarVariosRegistro("SELECT count(*) totalAdministradores from tb_usuarios where cod_rol = '1' ");
-                        foreach ($query as $d) {
-                            $totalAdministradores = $d['totalAdministradores'];
-                        }
-                        ?>
-                        <div class="col-lg-4 col-sm-6 col-12">
-                            <div class="card">
-                                <div class="card-header flex-column align-items-start pb-0">
-                                    <div class="avatar bg-light-primary p-50 m-0">
-                                        <div class="avatar-content">
-                                            <i data-feather="users" class="font-medium-5"></i>
+                            <!-- Orders Chart Card starts -->
+                            <?php
+                            $query = Conexion::buscarVariosRegistro("SELECT count(*) totalEmpleados from tb_usuarios where cod_rol = '2' ");
+                            foreach ($query as $d) {
+                                $totalEmpleados = $d['totalEmpleados'];
+                            }
+                            ?>
+                            <div class="col-lg-4 col-sm-6 col-12">
+                                <div class="card">
+                                    <div class="card-header flex-column align-items-start pb-0">
+                                        <div class="avatar bg-light-warning p-50 m-0">
+                                            <div class="avatar-content">
+                                                <i data-feather="package" class="font-medium-5"></i>
+                                            </div>
+                                        </div>
+                                        <h2 class="font-weight-bolder mt-1"> <?php echo $totalEmpleados ?> </h2>
+                                        <p class="card-text">Empleados</p>
+                                    </div>
+                                    <br clear="all">
+                                    <!-- <div id="order-chart"></div> -->
+                                </div>
+                            </div>
+                            <!-- Orders Chart Card ends -->
+
+                            <!-- Orders Chart Card starts -->
+                            <?php
+                            $query = Conexion::buscarVariosRegistro("SELECT count(*) totalVoluntarios from tb_voluntarios ");
+                            foreach ($query as $d) {
+                                $totalVoluntarios = $d['totalVoluntarios'];
+                            }
+                            ?>
+                            <div class="col-lg-4 col-sm-6 col-12">
+                                <div class="card">
+                                    <div class="card-header flex-column align-items-start pb-0">
+                                        <div class="avatar bg-light-warning p-50 m-0">
+                                            <div class="avatar-content">
+                                                <i data-feather="package" class="font-medium-5"></i>
+                                            </div>
+                                        </div>
+                                        <h2 class="font-weight-bolder mt-1"> <?php echo $totalVoluntarios ?> </h2>
+                                        <p class="card-text">Voluntarios</p>
+                                    </div>
+                                    <br clear="all">
+                                    <!-- <div id="order-chart"></div> -->
+                                </div>
+                            </div>
+                            <!-- Orders Chart Card ends -->
+                        </div>
+
+
+                        <!-- List DataTable -->
+
+                        <!--/ List DataTable -->
+                    </section>
+                    <!-- Dashboard Analytics end -->
+                <?php } else if ($_SESSION['datos_login']['cod_rol'] == "2") {  ?>
+                        <div class="content-wrapper">
+                            <div class="content-header row">
+                            </div>
+                            <div class="content-body">
+                                <section class="invoice-list-wrapper">
+                                    <div class="card">
+                                        <div class="card-datatable table-responsive">
+                                            <!-- <table id="tabla" class="invoice-list-table table"> -->
+                                            <table id='tabla' class='table table-striped table-bordered' style='width:100%'>
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Nombre</th>
+                                                        <th>c&eacute;dula</th>
+                                                        <th>provicina</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $tb_productora_arroz = Conexion::buscarVariosRegistro("SELECT
+                                     tba.cod_productoraArroz,tba.nombres, tba.apellidos, tba.celular, tba.cedula, tba.provincia, tba.canton, 
+                                     tu.usuario, tu.correo, tu.estado
+                                     from tb_productora_arroz tba INNER JOIN tb_usuarios tu on tu.cod_usuario = tba.cod_productoraArroz
+                                     where tu.cod_rol = 3 and tu.estado in ('A','I') ");
+                                                    $i = 1;
+                                                    foreach ($tb_productora_arroz as $d) {
+                                                        $cod_productoraArroz = $d['cod_productoraArroz'];
+                                                        $nombres      = $d['nombres'];
+                                                        $apellidos    = $d['apellidos'];
+                                                        $celular      = $d['celular'];
+                                                        $correo       = $d['correo'];
+                                                        $cedula      = $d['cedula'];
+                                                        $provincia   = $d['provincia'];
+                                                        $canton       = $d['canton'];
+                                                    ?>
+                                                        <tr>
+                                                            <td> <?php echo $i       ?> </td>
+                                                            <td> <a href="comprar-productora.php?id=<?php echo $cod_productoraArroz ?>"> <?php echo $nombres ?> </a>  </td> 
+                                                            
+                                                            <td> <?php echo $cedula ?> </td>
+                                                            <td> <?php echo $provincia ?> </td> 
+                                                          
+                                                        <?php $i++;
+                                                    } ?>
+                                                        </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <h2 class="font-weight-bolder mt-1"> <?php echo $totalAdministradores ?> </h2>
-                                    <p class="card-text">Administradores</p>
-                                </div>
-                                <br clear="all">
-                                <!-- <div id="gained-chart"></div> -->
+                                </section>
+
                             </div>
                         </div>
-                        <!-- Subscribers Chart Card ends -->
-
-                        <!-- Orders Chart Card starts -->
-                        <?php
-                        $query = Conexion::buscarVariosRegistro("SELECT count(*) totalEmpleados from tb_usuarios where cod_rol = '2' ");
-                        foreach ($query as $d) {
-                            $totalEmpleados = $d['totalEmpleados'];
-                        }
-                        ?>
-                        <div class="col-lg-4 col-sm-6 col-12">
-                            <div class="card">
-                                <div class="card-header flex-column align-items-start pb-0">
-                                    <div class="avatar bg-light-warning p-50 m-0">
-                                        <div class="avatar-content">
-                                            <i data-feather="package" class="font-medium-5"></i>
-                                        </div>
-                                    </div>
-                                    <h2 class="font-weight-bolder mt-1"> <?php echo $totalEmpleados ?> </h2>
-                                    <p class="card-text">Empleados</p>
-                                </div>
-                                <br clear="all">
-                                <!-- <div id="order-chart"></div> -->
-                            </div>
-                        </div>
-                        <!-- Orders Chart Card ends -->
-
-                        <!-- Orders Chart Card starts -->
-                        <?php
-                        $query = Conexion::buscarVariosRegistro("SELECT count(*) totalVoluntarios from tb_voluntarios ");
-                        foreach ($query as $d) {
-                            $totalVoluntarios = $d['totalVoluntarios'];
-                        }
-                        ?>
-                        <div class="col-lg-4 col-sm-6 col-12">
-                            <div class="card">
-                                <div class="card-header flex-column align-items-start pb-0">
-                                    <div class="avatar bg-light-warning p-50 m-0">
-                                        <div class="avatar-content">
-                                            <i data-feather="package" class="font-medium-5"></i>
-                                        </div>
-                                    </div>
-                                    <h2 class="font-weight-bolder mt-1">  <?php echo $totalVoluntarios ?>   </h2>
-                                    <p class="card-text">Voluntarios</p>
-                                </div>
-                                <br clear="all">
-                                <!-- <div id="order-chart"></div> -->
-                            </div>
-                        </div>
-                        <!-- Orders Chart Card ends -->
-                    </div>
-
-
-                    <!-- List DataTable -->
-
-                    <!--/ List DataTable -->
-                </section>
-                <!-- Dashboard Analytics end -->
-
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -217,7 +253,7 @@ require_once "configuracion/conexion.php";
     <!-- <script src="../app-assets/js/scripts/pages/dashboard-analytics.js"></script> -->
     <!-- <script src="../app-assets/js/scripts/pages/app-invoice-list.js"></script> -->
     <!-- END: Page JS-->
-
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
     <script>
         $(window).on('load', function() {
             if (feather) {

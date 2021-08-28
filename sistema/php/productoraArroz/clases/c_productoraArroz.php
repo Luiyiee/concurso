@@ -9,6 +9,10 @@ class ProductoraArroz
         $nombres   = $_POST['nombres'];
         $apellidos = $_POST['apellidos'];
         $celular   = $_POST['celular'];
+        $cedula   = $_POST['cedula'];
+        $provincia= $_POST['provincia'];
+        $canton   = $_POST['canton'];
+        $recinto   = $_POST['recinto'];
         $correo    = $_POST['correo'];
         $password  = $_POST['password'];
         $passwordConf  = $_POST['passwordConf'];
@@ -67,10 +71,16 @@ class ProductoraArroz
                 if ($data) {
                     $respuesta['status'] = "existe";
                     $respuesta['mensaje'] = "El usuario ya existe";
+                // $verificar = "SELECT * from tb_productora_arroz where cedula = '$cedula' ";
+
+                // if ($verificar) {
+                //     $respuesta['status'] = "existe";
+                //     $respuesta['mensaje'] = "La cedula ya existe";
                 } else {
+                    
                     if (move_uploaded_file($_FILES['foto']['tmp_name'], $carpeta . $nombreFinal)) {
                         // $tb_productora_arroz ='1';
-                        $tb_productora_arroz = Conexion::UpdateRegistro("INSERT INTO tb_productora_arroz  (nombres,apellidos,celular,fecha_creado,usuario_creado)  VALUES  ('" . htmlentities($nombres) . "','" . htmlentities($apellidos) . "','" . htmlentities($celular) . "', now(),'" . htmlentities($iduser) . "')");
+                        $tb_productora_arroz = Conexion::UpdateRegistro("INSERT INTO tb_productora_arroz  (nombres,apellidos,celular,cedula,provincia,canton,recinto,fecha_creado,usuario_creado)  VALUES  ('" . htmlentities($nombres) . "','" . htmlentities($apellidos) . "','" . htmlentities($celular) . "', '" . htmlentities($cedula) . "', '" . htmlentities($provincia) . "', '" . htmlentities($canton) . "', '" . htmlentities($recinto) . "', now(),'" . htmlentities($iduser) . "')");
                         if ($tb_productora_arroz) {
                             $pass           = sha1($password);
                             $cod_usuario = Conexion::lastId();

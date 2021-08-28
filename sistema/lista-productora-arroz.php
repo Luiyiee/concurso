@@ -82,17 +82,20 @@ require_once "configuracion/conexion.php";
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Nombres y Apellidos</th>
+                    <th>Nombre de</th>
                     <th>Celular</th>
                     <th>Genero</th>
                     <th>correo</th>
+                    <th>c&eacute;dula</th>
+                    <th>provicina</th>
+                    <th>canton</th>
                     <th>Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
                   $tb_productora_arroz = Conexion::buscarVariosRegistro("SELECT
-                                     tba.cod_productoraArroz,tba.nombres, tba.apellidos, tba.celular,
+                                     tba.cod_productoraArroz,tba.nombres, tba.apellidos, tba.celular, tba.cedula, tba.provincia, tba.canton, 
                                      tu.usuario, tu.correo, tu.estado
                                      from tb_productora_arroz tba INNER JOIN tb_usuarios tu on tu.cod_usuario = tba.cod_productoraArroz
                                      where tu.cod_rol = 3 and tu.estado in ('A','I') ");
@@ -103,6 +106,9 @@ require_once "configuracion/conexion.php";
                     $apellidos    = $d['apellidos'];
                     $celular      = $d['celular'];
                     $correo       = $d['correo'];
+                    $cedula      = $d['cedula'];
+                    $provincia   = $d['provincia'];
+                    $canton       = $d['canton'];
                   ?>
                     <tr>
                       <td> <?php echo $i       ?> </td>
@@ -110,6 +116,9 @@ require_once "configuracion/conexion.php";
                       <td> <?php echo $apellidos ?> </td>
                       <td> <?php echo $celular ?> </td>
                       <td> <?php echo $correo ?> </td>
+                      <td> <?php echo $cedula ?> </td>
+                      <td> <?php echo $provincia ?> </td>
+                      <td> <?php echo $canton ?> </td>
                       <td> <button class="btn btn-danger glyphicon glyphicon-remove"
                        onclick="preguntarSiNo('<?php echo $cod_productoraArroz ?>')"> <i class="fa fa-trash"></i>
 										</button> </td>

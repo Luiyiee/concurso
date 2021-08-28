@@ -90,19 +90,24 @@ if (!isset($_SESSION['datos_login'])) {
                                         <input type="hidden" id="iduser" name="iduser" value="<?php echo  $_SESSION['datos_login']['iduser']; ?>">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
-                                                <label for="input-10" class="col-12 col-form-label">Nombres</label>
+                                                <label for="input-10" class="col-12 col-form-label">Representante legal</label>
                                                 <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres">
-                                                <p id="agregaNombres" style="color: red; display:none">Ingresa los nombres</p>
+                                                <p id="agregaNombres" style="color: red; display:none">Ingresa el representante legal</p>
                                             </div>
                                             <div class="col-sm-4">
-                                                <label for="input-11" class="col-12 col-form-label">Apellidos</label>
-                                                <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos">
-                                                <p id="agregaApellidos" style="color: red; display:none">Ingresa los apellidos</p>
+                                                <label for="input-11" class="col-12 col-form-label">Denominacion </label>
+                                                <input type="text" class="form-control" id="denominacion" name="denominacion" placeholder="denominacion">
+                                                <p id="agregaApellidos" style="color: red; display:none">Ingresa la denominacion </p>
                                             </div>
                                             <div class="col-sm-4">
-                                                <label for="input-11" class="col-12 col-form-label">Celular</label>
-                                                <input type="number" class="form-control" id="celular" name="celular" placeholder="celular">
-                                                <p id="agregaCelular" style="color: red; display:none">Ingresa el celular</p>
+                                                <label for="input-11" class="col-12 col-form-label">Cedula</label>
+                                                <input type="number" class="form-control" id="cedula" name="cedula" placeholder="cedula">
+                                                <p id="agregaCelular" style="color: red; display:none">Ingresa la cedula</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label for="input-11" class="col-12 col-form-label">Localidad</label>
+                                                <input type="text" class="form-control" id="Localidad" name="localidad" placeholder="localidad">
+                                                <p id="agregaCelular" style="color: red; display:none">Ingresa la Localidad</p>
                                             </div>
                                         </div>
 

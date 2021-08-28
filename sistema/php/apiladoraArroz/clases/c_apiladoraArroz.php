@@ -7,8 +7,9 @@ class ApiladoraArroz
         $iduser    = $_POST['iduser'];
         $usuario   = $_POST['usuario'];
         $nombres   = $_POST['nombres'];
-        $apellidos = $_POST['apellidos'];
-        $celular   = $_POST['celular'];
+        $denominacion = $_POST['denominacion'];
+        $cedula   = $_POST['cedula'];
+        $localidad   = $_POST['localidad'];
         $correo    = $_POST['correo'];
         $password  = $_POST['password'];
         $passwordConf  = $_POST['passwordConf'];
@@ -67,10 +68,15 @@ class ApiladoraArroz
                 if ($data) {
                     $respuesta['status'] = "existe";
                     $respuesta['mensaje'] = "El usuario ya existe";
+                //  $verificar = "SELECT * from tb_productora_arroz where cedula = '$cedula' ";
+
+                // if ($verificar) {
+                //     $respuesta['status'] = "existe";
+                //     $respuesta['mensaje'] = "La cedula ya existe";
                 } else {
                     if (move_uploaded_file($_FILES['foto']['tmp_name'], $carpeta . $nombreFinal)) {
                         // $tb_apiladora_arroz ='1';
-                        $tb_apiladora_arroz = Conexion::UpdateRegistro("INSERT INTO tb_apiladora_arroz  (nombres,apellidos,celular,fecha_creado,usuario_creado)  VALUES  ('" . htmlentities($nombres) . "','" . htmlentities($apellidos) . "','" . htmlentities($celular) . "', now(),'" . htmlentities($iduser) . "')");
+                        $tb_apiladora_arroz = Conexion::UpdateRegistro("INSERT INTO tb_apiladora_arroz  (nombres,denominacion,cedula,localidad,fecha_creado,usuario_creado)  VALUES  ('" . htmlentities($nombres) . "','" . htmlentities($denominacion) . "','" . htmlentities($cedula) . "' ,'" . htmlentities($localidad) . "', now(),'" . htmlentities($iduser) . "')");
                         if ($tb_apiladora_arroz) {
                             $pass           = sha1($password);
                             $cod_usuario = Conexion::lastId();

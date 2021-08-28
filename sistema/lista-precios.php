@@ -82,41 +82,24 @@ require_once "configuracion/conexion.php";
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Nombres y Apellidos</th>
-                    <th>deniminacion</th>
-                    <th>cedula</th>
-                    <th>localidad</th>
-                    <th>correo</th>
-                    <th>Eliminar</th>
+                    <th>detalle</th>
+                    <th>valor_total</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                  $tb_apiladora_arroz = Conexion::buscarVariosRegistro("SELECT
-                                     tba.cod_apiladoraArroz,tba.nombres, tba.denominacion, tba.cedula, tba.localidad,
-                                     tu.usuario, tu.correo, tu.estado
-                                     from tb_apiladora_arroz tba INNER JOIN tb_usuarios tu on tu.cod_usuario = tba.cod_apiladoraArroz
-                                     where tu.cod_rol = 2 and tu.estado in ('A','I') ");
+                  $tb_apiladora_arroz = Conexion::buscarVariosRegistro("SELECT * from tb_precios");
                   $i = 1;
                   foreach ($tb_apiladora_arroz as $d) {
-                    $cod_apiladoraArroz = $d['cod_apiladoraArroz'];
-                    $nombres      = $d['nombres'];
-                    $denominacion    = $d['denominacion'];
-                    $cedula      = $d['cedula'];
-                    $localidad      = $d['localidad'];
-                    $correo       = $d['correo'];
+                    $cod_apiladoraArroz = $d['cod_precio'];
+                    $nombres      = $d['descripcion'];
+                    $valor_total    = $d['valor_oficial'];
                   ?>
                     <tr>
                       <td> <?php echo $i       ?> </td>
                       <td> <?php echo $nombres ?> </td>
-                      <td> <?php echo $denominacion ?> </td>
-                      <td> <?php echo $cedula ?> </td>
-                      <td> <?php echo $localidad ?> </td>
-                      <td> <?php echo $correo ?> </td>
-                      <td> <button class="btn btn-danger glyphicon glyphicon-remove"
-                       onclick="preguntarSiNo('<?php echo $cod_apiladoraArroz ?>')"> <i class="fa fa-trash"></i>
-										</button> </td>
-
+                      <td> <?php echo $valor_total ?> </td>
+                      
                     <?php $i++;
                   } ?>
                     </tr>

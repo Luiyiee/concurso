@@ -107,6 +107,30 @@ if (!isset($_SESSION['datos_login'])) {
                                         </div>
 
                                         <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <label for="input-10" class="col-12 col-form-label">Cédula</label>
+                                                <input type="number" class="form-control" id="cedula" name="cedula" placeholder="cedula">
+                                                <p id="agregaCedula" style="color: red; display:none">Ingresa cedula</p>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label for="input-11" class="col-12 col-form-label">provincia</label>
+                                                <input type="text" class="form-control" id="provincia" name="provincia" placeholder="provincia">
+                                                <p id="agregaPronvincia" style="color: red; display:none">Ingresa la provincia</p>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label for="input-11" class="col-12 col-form-label">Canton</label>
+                                                <input type="text" class="form-control" id="canton" name="canton" placeholder="canton">
+                                                <p id="agregaCanton" style="color: red; display:none">Ingresa el canton</p>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label for="input-11" class="col-12 col-form-label">Recinto</label>
+                                                <input type="text" class="form-control" id="recinto" name="recinto" placeholder="recinto">
+                                                <p id="agregaCanton" style="color: red; display:none">Ingresa el recinto</p>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group row">
                                             <div class="col-sm-6">
                                                 <label for="input-10" class="col-sm-6 col-form-label">Usuario</label>
                                                 <input type="text" class="form-control" id="usuario" name="usuario" placeholder="usuario">
